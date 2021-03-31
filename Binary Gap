@@ -1,45 +1,43 @@
-// you can write to stdout for debugging purposes, e.g.
-// printf("this is a debug message\n");
+int solution(int N) 
+{
+    //Declare variables
+    //BG is absent in 0-4
+    //Binary gap begins when first 1 obtained, let initial 0s go
+    // Save first 1, maxgap still 0!
+    //For next 0s, start counter and count the gap
+    //If next 1, store the last gap as maxgap
+    //Else, if N>0: keep counting , else return maxgap=0
 
-int solution(int N) {
-    // write your code in C99 (gcc 6.2.0)
    
-    int c=0;
-    int m=0;
-    if(N<2)
+    int gap=0;
+    int maxgap=0;
+    if(N<4)
     {
         return 0;
     }
     else
     {
+        while(N%2==0)
+        {
+             N=N/2;         //First 0s are not counted
+        }
+        
         while(N>0)
-         {   
-             if(N%2==0)
-             {
-                N=N/2;
-                 c=c+1;
-             }
+         {
+             if(N%2==1)
+            {
+                maxgap=gap; //maxgap updated
+                gap=0;      //counter flushed
+            }
             else
             {
-                
-                if(N>0)
-                {
-                    N=N/2;
-                    m=c;
-                    c=0;
-                }
-                else
-                {
-                    m=0;
-                }
-                
+                gap=gap+1;  //counter begins for 0 followed by 1
             }
+             N=N/2;   
+        }
         
-         }
-        
-        return m;
-         
-    
     }
-    
+        
+    return maxgap;
+            
 }
