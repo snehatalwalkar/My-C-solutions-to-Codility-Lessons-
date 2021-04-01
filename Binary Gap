@@ -1,3 +1,5 @@
+//This code is entirely my creation and gives a 100% score on Codility
+
 int solution(int N) 
 {
     //Declare variables
@@ -19,19 +21,26 @@ int solution(int N)
     {
         while(N%2==0)
         {
-             N=N/2;         //First 0s are not counted
+             N=N/2;               //first 0s are not counted
         }
         
         while(N>0)
          {
              if(N%2==1)
             {
-                maxgap=gap; //maxgap updated
-                gap=0;      //counter flushed
+                if(gap>=maxgap)
+                {
+                    maxgap=gap;  //maxgap updated
+                    gap=0;       //counter flushed
+                }
+                else
+                {
+                    N=N/2;   //eliminates consecutive 1's
+                }     
             }
             else
             {
-                gap=gap+1;  //counter begins for 0 followed by 1
+                gap=gap+1;  //counter begins for 0's followed by 1
             }
              N=N/2;   
         }
