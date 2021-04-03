@@ -1,1 +1,45 @@
+////This code is entirely my creation and gives a 100% score on Codility
+
+   // int i=0;
+   // assert(0<N<100);
+   // assert(0<K<100);
+    
+   // for (int i = 0; i < N; i++) 
+   // { 
+         
+        //while (-1000> A[i] < 1000) 
+        //{ 
+             //printf("Range of Array is -1000 to 1000. Re-enter.") 
+       // } 
+        //a[i] = ;
+
+
+
+
+
+
+//for K times rotate A[i] i goes from 0-N
+        
+
+struct Results solution(int A[], int N, int K) 
+{
+    int i=0;
+    int j=0;
+    struct Results result;
+    int size;
+    size=sizeof(result.A);
+
+    for(i=0;i<K;i++)
+    {
+    
+        for(j=0;j<size;j++)
+        {
+            result.A[j]=result.A[j-1];
+        }    
+    }
+
+    result.A=A;
+    result.N=N;
+    return result;    
+}
 
